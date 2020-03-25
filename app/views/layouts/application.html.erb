@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Forum</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="container mx-auto">
+
+      <% if I18n.locale == :es %>
+        <%= link_to t('home.navbar.english'), simple_discussion_path(locale: :en), class: "nav-link dropdown-toggle", method: :get %>
+      <% elsif I18n.locale == :en %>
+        <%= link_to t('home.navbar.spanish'), simple_discussion_path( locale: :es ), class: "nav-link dropdown-toggle", method: :get %>
+      <% end %>
+
+      <%= yield %>
+    </div>
+  </body>
+</html>
